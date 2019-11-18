@@ -5,7 +5,7 @@ To use this file server, the command goes like:
 
 For example, we could start the server like:
     fileserver 8080 ./public
-This would start the server at port 8080 and to serve all the files present inside the public directory.
+This would start the server at port 8080 to serve any files present inside the public directory.
 
 All files inside directory all listed at url endpoint "/index".
 Like:
