@@ -7,7 +7,7 @@ For example, we could start the server like:
     fileserver 8080 ./public
 This would start the server at port 8080 to serve any files present inside the public directory.
 
-All files inside directory all listed at url endpoint "/index".
+All files inside directory are all listed at url endpoint "/index".
 Like:
     domain:8080/index
 
