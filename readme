@@ -1,0 +1,9 @@
+This file server list the files that are recursively present inside a specified directory.
+
+To use this file server, the command goes like:
+    fileserver port directory
+
+For example, we could start the server like:
+    fileserver 8080 ./public
+This would start the server at port 8080 and gives all the list of files present inside the public directory.
+
