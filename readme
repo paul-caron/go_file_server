@@ -1,4 +1,4 @@
-This file server list the files that are recursively present inside a specified directory.
+This file server lists the files that are recursively present inside a specified directory.
 
 To use this file server, the command goes like:
     fileserver port directory
