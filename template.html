@@ -7,24 +7,31 @@
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
 </head>
 <body>
-<h1>Files</h1>
-<table id="myfiles" class="display">
-<thead>
-<tr>
-<th>num</th>
-<th>filepath</th>
-</tr>
-</thead>
-<tbody>
-{{ range $index, $filepath := . }}
-<tr><td> {{ $index }} </td><td><a href=" {{ $filepath }} " > {{ $filepath }} </a></td></tr>
-{{ end }}
-</tbody>
-</table>
-<script>
-function start(){
-    $("#myfiles").DataTable()
-}
-$(document).ready(start)
-</script>
+    <h1>Files</h1>
+    <table id="myfiles" class="display">
+        <thead>
+            <tr>
+                <th>num</th>
+                <th>filepath</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $index, $filepath := . }}
+            <tr>
+                <td> {{ $index }} </td>
+                <td>
+                    <a href=" {{ $filepath }} " >
+                        {{ $filepath }}
+                    </a>
+                </td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+    <script>
+        function start(){
+            $("#myfiles").DataTable()
+        }
+        $(document).ready(start)
+    </script>
 </body>
