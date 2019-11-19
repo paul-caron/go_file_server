@@ -23,3 +23,7 @@ Like:
 http://domain:8080/
 ```
 
+### Dependencies
+
+[JQuery](https://jquery.com/)
+[DataTables](https://datatables.net/)
