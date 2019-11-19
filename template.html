@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width initial-scale=1.0">
+<title>File Server</title>
+</head>
+<body>
+<h1>Files</h1>
+<ol type="I">
+{{ range $filepath := . }}
+<li><a href=" {{ $filepath }} " > {{ $filepath }} </a></li>
+{{ end }}
+</ol>
+</body>
