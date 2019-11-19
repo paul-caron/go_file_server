@@ -25,5 +25,7 @@ http://domain:8080/
 
 ### Dependencies
 
+The go file itself has no dependencies but the html template uses the following two: 
+
 - [JQuery](https://jquery.com/)
 - [DataTables](https://datatables.net/)
