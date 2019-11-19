@@ -29,3 +29,5 @@ The go file itself has no dependencies but the html template uses the following 
 
 - [JQuery](https://jquery.com/)
 - [DataTables](https://datatables.net/)
+
+DataTables is a Jquery plugin that makes HTML tables beautiful.
