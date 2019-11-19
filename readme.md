@@ -1,6 +1,6 @@
 # go_file_server
 
-[![issues x](https://img.shields.io/github/paul-caron/go_file_server)](https://github/issues/paul-caron/go_file_server)
+[![issues x](https://img.shields.io/github/paul-caron/go_file_server)](https://github/paul-caron/go_file_server)
 
 This file server lists the files that are recursively present inside the static directory.
 
