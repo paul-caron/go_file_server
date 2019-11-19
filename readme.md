@@ -1,5 +1,7 @@
 # go_file_server
 
+[![dependencies 0](https://img.shields.io/github/issues/paul-caron/go_file_server)](https://img.shields.io/github/issues/paul-caron/go_file_server)
+
 This file server lists the files that are recursively present inside the static directory.
 
 To use this file server, the command goes like:
