@@ -4,6 +4,8 @@
 
 This file server lists the files that are recursively present inside the static directory.
 
+### From command line
+
 To use this file server, the command goes like:
 ```
 fileserver port
@@ -20,6 +22,4 @@ Like:
 ```
 http://domain:8080/
 ```
-
-
 
