@@ -2,12 +2,29 @@
 <head>
 <meta name="viewport" content="width=device-width initial-scale=1.0">
 <title>File Server</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
 </head>
 <body>
 <h1>Files</h1>
-<ol type="I">
-{{ range $filepath := . }}
-<li><a href=" {{ $filepath }} " > {{ $filepath }} </a></li>
+<table id="myfiles" class="display">
+<thead>
+<tr>
+<th>num</th>
+<th>filepath</th>
+</tr>
+</thead>
+<tbody>
+{{ range $index, $filepath := . }}
+<tr><td> {{ $index }} </td><td><a href=" {{ $filepath }} " > {{ $filepath }} </a></td></tr>
 {{ end }}
-</ol>
+</tbody>
+</table>
+<script>
+function start(){
+    $("#myfiles").DataTable()
+}
+$(document).ready(start)
+</script>
 </body>
