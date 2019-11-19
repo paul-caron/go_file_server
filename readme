@@ -1,3 +1,5 @@
+[![build status]]
+
 This file server lists the files that are recursively present inside the static directory.
 
 To use this file server, the command goes like:
