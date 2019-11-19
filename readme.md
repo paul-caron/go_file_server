@@ -4,6 +4,9 @@
 
 [![license x](https://img.shields.io/github/license/paul-caron/go_file_server)](https://img.shields.io/github/license/paul-caron/go_file_server)
 
+[![license x](https://img.shields.io/badge/dependencies-0-blue)](https://img.shields.io/badge/dependencies-0-blue)
+
+
 This file server lists the files that are recursively present inside the static directory.
 
 To use this file server, the command goes like:
