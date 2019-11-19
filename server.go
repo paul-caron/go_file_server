@@ -1,7 +1,6 @@
 package main
 
 import (
-    "fmt"
     "net/http"
     "log"
     "os"
@@ -11,20 +10,12 @@ import (
 )
 
 func main(){
-    args:=os.Args
     var dir string = "static"
     var port string
-    if len(args) < 2 {
-        fmt.Println("Missing arguments. The correct format is:\n    fileserver port ")
-        os.Exit(1)
+    if len(os.Args) != 2 {
+        log.Fatal("The command is incorrect. The correct format is:\n    fileserver port ")
     }
-    if len(args) == 2 {
-        port = args[1]
-    }
-    if len(args) >=3 {
-        fmt.Println("Too many arguments. The correct format is:\n    fileserver port ")
-        os.Exit(1)
-    }
+    port = os.Args[1]
     myServer := &http.Server{
         MaxHeaderBytes : 1 << 20,
         ReadTimeout : 1 * time.Second,
