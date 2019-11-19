@@ -1,4 +1,4 @@
-**go_file_server**
+# go_file_server
 
 This file server lists the files that are recursively present inside the static directory.
 
