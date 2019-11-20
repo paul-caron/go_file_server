@@ -2,17 +2,18 @@
 <head>
 <meta name="viewport" content="width=device-width initial-scale=1.0">
 <title>File Server</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 </head>
 <body>
     <h1>Files</h1>
     <table id="myfiles" class="display">
         <thead>
             <tr>
-                <th>num</th>
+                <th>#</th>
                 <th>filepath</th>
+                <th>remove</th>
             </tr>
         </thead>
         <tbody>
@@ -24,11 +25,24 @@
                         {{ $filepath }}
                     </a>
                 </td>
+                <td>
+                    <button id="{{ $filepath }}" onclick="deleteFile(this.id)">
+                        ×
+                    </button>
+                </td>
             </tr>
             {{ end }}
         </tbody>
     </table>
-    <script>
+    <form action="/" method="POST" enctype="multipart/form-data">
+       <input type="file" name="upload" id="upload">
+       <input type="submit" value="upload a file" name="submit">
+    </form>
+    <script type="text/javascript">
+        function deleteFile(id){
+            $.ajax({url:"/?filepath="+id, type:"DELETE",success:function(result){location.reload(true)}})
+        }
+
         function start(){
             $("#myfiles").DataTable()
         }

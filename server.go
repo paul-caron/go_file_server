@@ -1,12 +1,15 @@
+
 package main
 
 import (
+    "fmt"
     "net/http"
     "log"
     "os"
     "path/filepath"
     "time"
     "html/template"
+    "io/ioutil"
 )
 
 func main(){
@@ -23,6 +26,23 @@ func main(){
         Addr : ":" + port,
     }
     http.HandleFunc("/", func(w http.ResponseWriter, r * http.Request){
+        if r.Method == "POST" {
+            r.ParseMultipartForm(1<<20)
+            file, handler, err := r.FormFile("upload")
+            if err != nil {
+                log.Println("Error Retrieving the File")
+                log.Println(err)
+            }
+            defer file.Close()
+            b, _ := ioutil.ReadAll(file)
+            ioutil.WriteFile("static/"+handler.Filename, b, 0666)
+        }else if r.Method == "DELETE" {
+             r.ParseForm()
+             os.Remove(r.Form["filepath"][0])
+             fmt.Fprint(w,"deleted")
+             return
+        }
+        log.Println(r.Method)
         var files []string
         filepath.Walk(dir, func (path string, info os.FileInfo, err error) error {
             if !info.IsDir() {
