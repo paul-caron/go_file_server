@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -11,6 +10,11 @@ import (
     "html/template"
     "io/ioutil"
 )
+
+type infoStruct struct {
+    Path string
+    Info os.FileInfo
+}
 
 func main(){
     var dir string = "static"
@@ -42,11 +46,14 @@ func main(){
              fmt.Fprint(w,"deleted")
              return
         }
-        log.Println(r.Method)
-        var files []string
-        filepath.Walk(dir, func (path string, info os.FileInfo, err error) error {
-            if !info.IsDir() {
-                files = append(files, path)
+        var files []infoStruct
+        filepath.Walk(dir, func (fpath string, finfo os.FileInfo, err error) error {
+            if !finfo.IsDir() {
+                fileInfos := infoStruct {
+                    Path : string(fpath),
+                    Info : finfo,
+                }
+                files = append(files, fileInfos)
             }
             return nil
         })

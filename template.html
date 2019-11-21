@@ -8,28 +8,23 @@
 </head>
 <body>
     <h1>Files</h1>
-    <table id="myfiles" class="display">
+    <table style="font-size:0.8em" id="fileTable" class="display">
         <thead>
             <tr>
-                <th>#</th>
                 <th>filepath</th>
+                <th>size</th>
+                <th>date</th>
                 <th>remove</th>
             </tr>
         </thead>
         <tbody>
-            {{ range $index, $filepath := . }}
+            {{ range $file := . }}
             <tr>
-                <td> {{ $index }} </td>
-                <td>
-                    <a href=" {{ $filepath }} " >
-                        {{ $filepath }}
-                    </a>
-                </td>
-                <td>
-                    <button id="{{ $filepath }}" onclick="deleteFile(this.id)">
-                        ×
-                    </button>
-                </td>
+                <td>{{ $file.Path }}</td>
+                <td>{{ $file.Info.Size }}</td>
+                <td>{{ $file.Info.ModTime }}</td>
+                <td id="{{ $file.Path }}" 
+                    onclick="deleteFile(this.id)">×</td>
             </tr>
             {{ end }}
         </tbody>
@@ -40,11 +35,16 @@
     </form>
     <script type="text/javascript">
         function deleteFile(id){
-            $.ajax({url:"/?filepath="+id, type:"DELETE",success:function(result){location.reload(true)}})
+            $.ajax({
+                     url:"/?filepath="+id,
+                     type:"DELETE",
+                     success:function(result){
+                         location.reload(true)
+                     }
+            })
         }
-
         function start(){
-            $("#myfiles").DataTable()
+            $("#fileTable").DataTable()
         }
         $(document).ready(start)
     </script>
