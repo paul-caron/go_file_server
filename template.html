@@ -20,11 +20,17 @@
         <tbody>
             {{ range $file := . }}
             <tr>
-                <td>{{ $file.Path }}</td>
+                <td><a href="{{ $file.Path }}">
+                    {{ $file.Path }}
+                </a></td>
                 <td>{{ $file.Info.Size }}</td>
                 <td>{{ $file.Info.ModTime }}</td>
-                <td id="{{ $file.Path }}" 
-                    onclick="deleteFile(this.id)">×</td>
+                <td>
+                <span id="{{ $file.Path }}" 
+                    onclick="deleteFile(this.id)">
+                    ✖️
+                </span>
+                </td>
             </tr>
             {{ end }}
         </tbody>
@@ -35,13 +41,15 @@
     </form>
     <script type="text/javascript">
         function deleteFile(id){
-            $.ajax({
+            if(confirm("Delete this file?\n"+id)){
+                $.ajax({
                      url:"/?filepath="+id,
                      type:"DELETE",
                      success:function(result){
                          location.reload(true)
                      }
-            })
+                })
+            }
         }
         function start(){
             $("#fileTable").DataTable()
