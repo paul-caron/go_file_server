@@ -1,5 +1,5 @@
 {
-    "port": 8080,
+    "Port": 8080,
     "TLSEnabled": false,
     "SSLCertificate": "cert.pem",
     "SSLKey": "key.pem"
