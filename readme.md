@@ -25,7 +25,7 @@ go run server.go
 ```
 All files inside the static directory are then listed at url endpoint "/".
 ```
-http://domain:8080/
+https://domain:8080/
 ```
 
 ### Dependencies
