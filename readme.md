@@ -4,20 +4,26 @@
 
 This file server lists the files that are recursively present inside the static directory.
 
-### From command line
+### Configuration
 
-To use this file server, the command goes like:
+All configuration is done inside the "config.json"
+
+Configuration is done as follow :
 ```
-fileserver port
+{
+    "Port": 8080,
+    "TLSEnabled": true,
+    "SSLCertificate": "cert.pem",
+    "SSLKey": "key.pem"
+}
 ```
 
-For example, we could start the server like:
+### Start
+Execute a compiled binary of server.go or run uncompiled server.go, like
 ```
-fileserver 8080
+go run server.go
 ```
-This would start the server at port 8080
-
-All files inside the static directory are all listed at url endpoint "/".
+All files inside the static directory are then listed at url endpoint "/".
 Like:
 ```
 http://domain:8080/
