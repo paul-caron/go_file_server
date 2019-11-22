@@ -1,7 +1,7 @@
 package main
 
 import (
-_    "fmt"
+    "fmt"
     "net/http"
     "log"
     "os"
@@ -9,6 +9,8 @@ _    "fmt"
     "time"
     "html/template"
     "io/ioutil"
+    "encoding/json"
+    "strconv"
 )
 
 const dir string = "static"
@@ -18,25 +20,38 @@ type infoStruct struct {
     Info os.FileInfo
 }
 
+type Config struct {
+    Port int `json:"port"`
+    TLSEnabled bool `json:"TLSEnabled"`
+    SSLCertificate string `json:"SSLcertificate"`
+    SSLKey string `json:"SSLKey"`
+}
+
 func main(){
-    var port string
-    if len(os.Args) != 2 {
-        log.Fatal("The command is incorrect. The correct format is:\n    fileserver port ")
-    }
-    port = os.Args[1]
+    var conf Config
+    configFile, _ := os.Open("config.json")
+    defer configFile.Close()
+    byteConfig, _ := ioutil.ReadAll(configFile)
+    json.Unmarshal(byteConfig, &conf)
+    fmt.Println(conf.Port,conf.TLSEnabled)
     myServer := &http.Server{
         MaxHeaderBytes : 1 << 20,
         ReadTimeout : 10 * time.Second,
         WriteTimeout : 10 * time.Second,
-        Addr : ":" + port,
+        Addr : ":" + strconv.Itoa(conf.Port),
     }
     http.HandleFunc("/", root)
     http.HandleFunc("/delete", deleteFile)
     http.HandleFunc("/upload", uploadFile)
-    log.Println("Starting file server in directory : ",dir+":"+port)
     fileServer := http.FileServer(http.Dir("./"))
     http.Handle("/static/", fileServer)
-    log.Fatal(myServer.ListenAndServeTLS("cert.pem","key.pem"))
+    if conf.TLSEnabled {
+        log.Println("https")
+        log.Fatal(myServer.ListenAndServeTLS(conf.SSLCertificate, conf.SSLKey))
+    }else{
+        log.Println("http")
+        log.Fatal(myServer.ListenAndServe())
+    }
 }
 
 
@@ -59,7 +74,7 @@ func root(w http.ResponseWriter, r *http.Request) {
 func deleteFile(w http.ResponseWriter, r *http.Request) {
     r.ParseForm()
     if len(r.Form["filepath"]) > 0 {
-        log.Println(os.Remove(r.Form["filepath"][0]))
+        os.Remove(r.Form["filepath"][0])
         templ, _ := template.ParseFiles("templateDelete.html")
         templ.Execute(w, "")
     }
