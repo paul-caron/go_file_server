@@ -8,7 +8,7 @@ This file server lists the files that are recursively present inside the static 
 
 All configuration is done inside the "config.json"
 
-Configuration is done as follow :
+Configuration is done as follows :
 ```
 {
     "Port": 8080,
