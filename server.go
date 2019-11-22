@@ -21,7 +21,7 @@ type infoStruct struct {
 }
 
 type Config struct {
-    Port int `json:"port"`
+    Port int `json:"Port"`
     TLSEnabled bool `json:"TLSEnabled"`
     SSLCertificate string `json:"SSLCertificate"`
     SSLKey string `json:"SSLKey"`
