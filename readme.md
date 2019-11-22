@@ -23,11 +23,14 @@ Execute a compiled binary of server.go or run it uncompiled.
 ```
 go run server.go
 ```
-All files inside the static directory are then listed at url endpoint "/".
+All files inside the static directory are then listed at url :
 ```
 https://domain:8080/
 ```
-
+or if configuration has TLSEnables:false,
+```
+http://domain:8080/
+```
 ### Dependencies
 
 The go file itself has no dependencies but the html template uses the following two: 
