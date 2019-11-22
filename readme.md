@@ -9,7 +9,7 @@ This file server lists the files that are recursively present inside the static 
 All configuration is done inside the "config.json"
 
 Configuration is done as follows :
-```
+```json
 {
     "Port": 8080,
     "TLSEnabled": true,
@@ -20,7 +20,7 @@ Configuration is done as follows :
 
 ### Start
 Execute a compiled binary of server.go or run it uncompiled.
-```
+```bash
 go run server.go
 ```
 All files inside the static directory are then listed at url :
