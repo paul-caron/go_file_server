@@ -19,12 +19,11 @@ Configuration is done as follow :
 ```
 
 ### Start
-Execute a compiled binary of server.go or run uncompiled server.go, like
+Execute a compiled binary of server.go or run uncompiled server.go.
 ```
 go run server.go
 ```
 All files inside the static directory are then listed at url endpoint "/".
-Like:
 ```
 http://domain:8080/
 ```
