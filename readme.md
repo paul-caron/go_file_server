@@ -19,7 +19,7 @@ Configuration is done as follow :
 ```
 
 ### Start
-Execute a compiled binary of server.go or run uncompiled "server.go".
+Execute a compiled binary of server.go or run it uncompiled.
 ```
 go run server.go
 ```
