@@ -27,7 +27,7 @@ All files inside the static directory are then listed at url :
 ```
 https://domain:8080/
 ```
-or if configuration has TLSEnables:false,
+or
 ```
 http://domain:8080/
 ```
