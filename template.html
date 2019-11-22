@@ -35,20 +35,18 @@
             {{ end }}
         </tbody>
     </table>
-    <form action="/" method="POST" enctype="multipart/form-data">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
        <input type="file" name="upload" id="upload">
        <input type="submit" value="upload a file" name="submit">
+    </form>
+    <form id="deleteForm" action="/delete" method="POST">
+       <input id="deleteFilename" name="filepath" />
     </form>
     <script type="text/javascript">
         function deleteFile(id){
             if(confirm("Delete this file?\n"+id)){
-                $.ajax({
-                     url:"/?filepath="+id,
-                     type:"DELETE",
-                     success:function(result){
-                         location.reload(true)
-                     }
-                })
+                $("#deleteFilename").val(id)
+                $("#deleteForm").submit()
             }
         }
         function start(){
