@@ -20,7 +20,7 @@ Configuration is done as follows :
 
 ### Start
 Execute a compiled binary of server.go or run it uncompiled.
-```bash
+```shell
 go run server.go
 ```
 All files inside the static directory are then listed at url :
